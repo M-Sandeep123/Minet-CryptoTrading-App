@@ -1,0 +1,414 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Lee Son",
+      "email": "leebali554@gmail.com",
+      "password": "Lee)54(0",
+      "balance": 34000
+    },
+    {
+      "id": 2,
+      "fullName": "Mee Son",
+      "email": "meebali554@gmail.com",
+      "password": "Mee)54(0",
+      "balance": 340000
+    },
+    {
+      "id": 3,
+      "fullName": "Nee Son",
+      "email": "neebali554@gmail.com",
+      "password": "Nee)54(0",
+      "balance": 34000
+    },
+    {
+      "fullName": "Moo Sen",
+      "email": "mooali554@gmail.com",
+      "password": "Lee)54(0",
+      "balance": 34000,
+      "id": 4
+    },
+    {
+      "fullName": "Moo Sen",
+      "email": "mooali554@gmail.com",
+      "password": "Lee)54(0",
+      "balance": 34000,
+      "id": 5
+    },
+    {
+      "fullName": "Oshin Gupta",
+      "email": "Oshin@gmail.com",
+      "password": "Lphduhu55",
+      "balance": 50000,
+      "id": 6
+    },
+    {
+      "fullName": "test",
+      "email": "test@test.gmail.com",
+      "password": "test@123",
+      "balance": 34000,
+      "id": 7
+    },
+    {
+      "fullName": "Naga Supriya S",
+      "email": "supriya.s@zemosolabs.com",
+      "password": "default@1234",
+      "balance": 50000,
+      "id": 8
+    },
+    {
+      "fullName": "Supriya",
+      "email": "new@test.com",
+      "password": "test@123",
+      "balance": 50000,
+      "id": 9
+    },
+    {
+      "fullName": "Naga Supriya S",
+      "email": "supriya.s@zemosolabs.com",
+      "password": "default@1234",
+      "balance": 50000,
+      "id": 10
+    },
+    {
+      "fullName": "Oshin Gupta",
+      "email": "test@gmail.com",
+      "password": "Lpoknm@12r",
+      "balance": 50000,
+      "id": 11
+    },
+    {
+      "fullName": "Oshin Gupta",
+      "email": "testing@gmail.com",
+      "password": "fvfgfdg@fgf1",
+      "balance": 50000,
+      "id": 12
+    }
+  ],
+  "watchlist": [
+    {
+      "id": 1,
+      "cryptoName": "Bitcoin",
+      "cryptoSrc": "bitCoin.png",
+      "cryptoLabel": "BTC",
+      "cryptoPrice": 3406069.54,
+      "cryptoMarketCap": "$60.1T",
+      "cryptoChange": "+1.07%",
+      "cryptoVolume": "$2.9T",
+      "cryptoCirculatingSupply": "18.8M BTC",
+      "cryptoWatchlisted": true,
+      "userId": 11
+    }
+  ],
+  "portfolio": [
+    {
+      "id": 1,
+      "coinName": "BitCoin",
+      "coinSrc": "bitCoin.png",
+      "coinCaption": "BTC",
+      "coinPrice": 328553.73,
+      "coinChange": "+1.06%",
+      "coinMarketCap": "$60.1T",
+      "coinisWatchListed": true
+    },
+    {
+      "id": 2,
+      "coinName": "Ethereum",
+      "coinSrc": "ethereum.png",
+      "coinCaption": "ETH",
+      "coinPrice": 216678.1,
+      "coinChange": "-5.49%",
+      "coinMarketCap": "$25.4T",
+      "coinisWatchListed": false
+    },
+    {
+      "id": 3,
+      "coinName": "Ethereum 2",
+      "coinSrc": "ethereum2.png",
+      "coinCaption": "ETH2",
+      "coinPrice": 74.3,
+      "coinChange": "-5.49%",
+      "coinMarketCap": "$4.6T",
+      "coinisWatchListed": true
+    },
+    {
+      "id": 4,
+      "coinName": "Tether",
+      "coinSrc": "tether.svg",
+      "coinCaption": "USDT",
+      "coinPrice": 74.31,
+      "coinChange": "+0.11%",
+      "coinMarketCap": "$4.6T",
+      "coinisWatchListed": true
+    },
+    {
+      "id": 5,
+      "coinName": "Bitcoin Coin",
+      "coinSrc": "bitcoinCoin.png",
+      "coinCaption": "BNB",
+      "coinPrice": 24942.54,
+      "coinChange": "-3.69%",
+      "coinMarketCap": "$4.2T",
+      "coinisWatchListed": true
+    },
+    {
+      "id": 6,
+      "coinName": "Cardano",
+      "coinSrc": "cardano.png",
+      "coinCaption": "ADA",
+      "coinPrice": 104.52,
+      "coinChange": "-1.82%",
+      "coinMarketCap": "$3.4T",
+      "coinisWatchListed": false
+    },
+    {
+      "id": 7,
+      "coinName": "XRP",
+      "coinSrc": "xrp.svg",
+      "coinCaption": "XRP",
+      "coinPrice": 57.21,
+      "coinChange": "+1.11%",
+      "coinMarketCap": "$2.7T",
+      "coinisWatchListed": false
+    },
+    {
+      "id": 8,
+      "coinName": "Dodge Coin",
+      "coinSrc": "DodgeCoin.png",
+      "coinCaption": "XRP",
+      "coinPrice": 17.64,
+      "coinChange": "-6.96%",
+      "coinMarketCap": "$2.3T",
+      "coinisWatchListed": false
+    },
+    {
+      "id": 9,
+      "coinName": "USD Coin",
+      "coinSrc": "usd.png",
+      "coinCaption": "XRP",
+      "coinPrice": 74.26,
+      "coinChange": "+1.01%",
+      "coinMarketCap": "$2.1T",
+      "coinisWatchListed": false
+    }
+  ],
+  "wallet": [
+    {
+      "userId": 3,
+      "date": "2023-9-8",
+      "transactionCryptoName": "Bitcoin",
+      "otherUser": "From Naga Supriya S",
+      "quantity": "+0.009395 BTC",
+      "transactionType": "Purchased",
+      "availableBalance": "+$8000.86",
+      "id": 1
+    },
+    {
+      "userId": 4,
+      "date": "2023-9-8",
+      "transactionCryptoName": "Bitcoin",
+      "otherUser": "From Sandeep Mudigonda",
+      "quantity": "+0.006312 BTC",
+      "transactionType": "Purchased",
+      "availableBalance": "+$21499.11",
+      "id": 2
+    },
+    {
+      "userId": 9,
+      "date": "2023-9-10",
+      "transactionCryptoName": "Bitcoin",
+      "otherUser": "From Supriya",
+      "quantity": "+0.006019 BTC",
+      "transactionType": "Purchased",
+      "availableBalance": "+$20501.13",
+      "id": 3
+    },
+    {
+      "userId": 9,
+      "date": "2023-9-10",
+      "transactionCryptoName": "Ethereum",
+      "otherUser": "From Supriya",
+      "quantity": "+21.187583 ETH",
+      "transactionType": "Purchased",
+      "availableBalance": "+$27500",
+      "id": 4
+
+    },
+    {
+      "userId": 13,
+      "date": "2023-9-11",
+      "transactionCryptoName": "Bitcoin",
+      "otherUser": "From Oshin Gupta",
+      "quantity": "+0.005431 BTC",
+      "transactionType": "Purchased",
+      "availableBalance": "+$18498.36",
+      "id": 5
+    },
+    {
+      "userId": 13,
+      "date": "2023-9-11",
+      "transactionCryptoName": "Ethereum",
+      "otherUser": "From Oshin Gupta",
+      "quantity": "+12.71255 ETH",
+      "availableBalance": "+$16500",
+      "transactionType": "Sold",
+      "id": 6
+    },
+    {
+      "userId": 14,
+      "date": "2023-9-11",
+      "transactionCryptoName": "Bitcoin",
+      "otherUser": "From Oshin Gupta",
+      "quantity": "+0.007046 BTC",
+      "transactionType": "Purchased",
+      "availableBalance": "+$23999.17",
+      "id": 7
+    },
+    {
+      "userId": 14,
+      "date": "2023-9-11",
+      "transactionCryptoName": "Bitcoin",
+      "otherUser": "From Oshin Gupta",
+      "quantity": "+0.006753 BTC",
+      "availableBalance": "+$23001.19",
+      "transactionType": "Sold",
+      "id": 8
+    }
+  ],
+  "transaction": [
+    {
+      "id": 1,
+      "transitDate": "2023-7-23",
+      "cryptoName": "Bitcoin BTC",
+      "cryptoQuantity": "-0.0234510 BTC",
+      "currentBalance": "+$34,000.00",
+      "transactionType": "Sold"
+    },
+    {
+      "id": 2,
+      "transitDate": "2023-7-7",
+      "cryptoName": "Bitcoin BTC",
+      "cryptoQuantity": "-0.0234510 BTC",
+      "currentBalance": "+$34,000.00",
+      "transactionType": "Purchased"
+    },
+    {
+      "id": 3,
+      "transitDate": "2023-6-6",
+      "cryptoName": "Bitcoin BTC",
+      "cryptoQuantity": "-0.0234510 BTC",
+      "currentBalance": "+$34,000.00",
+      "transactionType": "Purchased"
+    }
+  ],
+   "cryptocurrency": [
+    {
+      "id": 1,
+      "cryptoName": "Bitcoin",
+      "cryptoSrc": "bitCoin.png",
+      "cryptoLabel": "BTC",
+      "cryptoPrice": 3406069.54,
+      "cryptoMarketCap": "$60.1T",
+      "cryptoChange": "+1.06%",
+      "cryptoVolume": "$2.9T",
+      "cryptoCirculatingSupply": "18.8M BTC",
+      "cryptoWatchlisted": true
+    },
+    {
+      "id": 2,
+      "cryptoName": "Ethereum",
+      "cryptoSrc": "ethereum.png",
+      "cryptoLabel": "ETH",
+      "cryptoPrice": 1297.93,
+      "cryptoMarketCap": "$162.92",
+      "cryptoChange": "-5.49%",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M ETH",
+      "cryptoWatchlisted": false
+    },
+    {
+      "id": 3,
+      "cryptoName": "Ethereum 2",
+      "cryptoSrc": "ethereum2.png",
+      "cryptoLabel": "ETH2",
+      "cryptoPrice": 74.3,
+      "cryptoChange": "-5.49%",
+      "cryptoMarketCap": "$4.6T",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M ETH2",
+      "cryptoWatchlisted": false
+    },
+    {
+      "id": 4,
+      "cryptoName": "Tether",
+      "cryptoSrc": "tether.svg",
+      "cryptoLabel": "USDT",
+      "cryptoPrice": 74.31,
+      "cryptoChange": "+0.11%",
+      "cryptoMarketCap": "$4.6T",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M USDT",
+      "cryptoWatchlisted": false
+    },
+    {
+      "id": 5,
+      "cryptoName": "Bitcoin Coin",
+      "cryptoSrc": "bitcoinCoin.png",
+      "cryptoLabel": "BNB",
+      "cryptoPrice": 24942.54,
+      "cryptoChange": "-3.69%",
+      "cryptoMarketCap": "$4.2T",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M BNB",
+      "cryptoWatchlisted": false
+    },
+    {
+      "id": 6,
+      "cryptoName": "Cardano",
+      "cryptoSrc": "cardano.png",
+      "cryptoLabel": "ADA",
+      "cryptoPrice": 104.52,
+      "cryptoChange": "-1.82%",
+      "cryptoMarketCap": "$3.4T",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M ADA",
+      "cryptoWatchlisted": false
+    },
+    {
+      "id": 7,
+      "cryptoName": "XRP",
+      "cryptoSrc": "xrp.svg",
+      "cryptoLabel": "XRP",
+      "cryptoPrice": 57.21,
+      "cryptoChange": "+1.11%",
+      "cryptoMarketCap": "$2.7T",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M XRP",
+      "cryptoWatchlisted": false
+    },
+    {
+      "id": 8,
+      "cryptoName": "Dodge Coin",
+      "cryptoSrc": "DodgeCoin.png",
+      "cryptoLabel": "XRP",
+      "cryptoPrice": 17.64,
+      "cryptoChange": "-6.96%",
+      "cryptoMarketCap": "$2.3T",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M XRP",
+      "cryptoWatchlisted": false
+    },
+    {
+      "id": 9,
+      "cryptoName": "USD Coin",
+      "cryptoSrc": "usd.png",
+      "cryptoLabel": "XRP",
+      "cryptoPrice": 74.26,
+      "cryptoChange": "+1.01%",
+      "cryptoMarketCap": "$2.1T",
+      "cryptoVolume": "$11.5T",
+      "cryptoCirculatingSupply": "122.60M XRP",
+      "cryptoWatchlisted": false
+    }
+  ]
+}

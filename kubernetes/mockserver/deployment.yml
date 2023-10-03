@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mockserver
+spec:
+  selector:
+    matchLabels:
+      app: mockserver
+      project: bootcamp115
+  template:
+    metadata:
+      labels:
+        app: mockserver
+        project: bootcamp115
+    spec:
+      containers:
+        - name: mockserver-pod
+          image: node:16-alpine
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            httpGet:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 2
+          livenessProbe:
+            httpGet:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          command:
+            - "sh"
+            - "-c"
+          args:
+            - "npm i -g json-server; cp /app/db.json /home/db.json; json-server -w /home/db.json -p 8080 -H 0.0.0.0"
+          volumeMounts:
+            - name: mock-data
+              mountPath: /app
+      volumes:
+        - name: mock-data
+          configMap:
+            name: mockserver-data
+            optional: false

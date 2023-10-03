@@ -1,0 +1,125 @@
+name: BOOTCAMP - BACKEND deployment
+on:
+  push:
+    paths:
+      - "backend/**"
+      - ".github/workflows/backendDeploy.yml"
+env:
+    GITHUB_USER: ishtiaqsamdani007
+jobs:
+  foldersChanged:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: backend
+
+    outputs:
+      changed-services: ${{ steps.set-output.outputs.changed-services }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v37
+
+      - name: Determine changed services
+        id: set-output
+        run: |
+          changed_services=()
+          services=("api-gateway" "cryptoservice" "portfolioservice" "service-registry" "userservice" "walletservice")  
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            path=$(echo "$file" | cut -d'/' -f2)
+            already_exists=false
+            for changed in "${changed_services[@]}"; do
+                if [[ $changed == $path ]]; then
+                    # If it exists, set a flag and break
+                    already_exists=true
+                    break
+                fi
+            done
+            for service in "${services[@]}"; do
+                if [[ $already_exists == false && $service == $path ]]; then
+                    changed_services+=("$path")
+                    break
+                fi
+            done  
+          done
+          json_array="[\"${changed_services[0]}\""
+          for i in "${changed_services[@]:1}"; do
+              json_array+=",\"$i\""
+          done
+          json_array+="]"
+          echo "::set-output name=changed-services::$json_array"
+          echo "Changed services normal: ${changed_services[*]}"
+          if RUN_ALL_SERVICE == true; then
+            echo "Running all services"
+            echo RUN_ALL_SERVICE
+            echo "::set-output name=changed-services::$services"
+          else
+            echo "Running changed services"
+            echo "::set-output name=changed-services::$json_array"
+          fi
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: foldersChanged
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: backend
+    strategy:
+      matrix:
+        service: ${{fromJson(needs.foldersChanged.outputs.changed-services)}}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "corretto"
+          java-version: "11"
+
+    #   - name: ls
+    #     run: |
+    #       ls -la
+    #       ls -la backend
+    #       ls -la backend/${{ matrix.service }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ env.GITHUB_USER }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION}}
+
+      - name: Adding EKS cluster and Build and Deploy the service
+        env:
+          aws_region: ${{ secrets.AWS_REGION}}
+          cluster_name: ${{ secrets.CLUSTER_NAME }}
+          SERVICE_NAME: ${{ matrix.service }}
+        run: |
+          aws eks --region $aws_region update-kubeconfig --name $cluster_name
+          cd ${SERVICE_NAME}
+
+          mvn clean package -Dmaven.test.skip=true
+          docker build -t ghcr.io/${{ env.GITHUB_USER }}/bc-115-backend-${SERVICE_NAME}:v${{ github.run_number }} .
+          docker tag ghcr.io/${{ env.GITHUB_USER }}/bc-115-backend-${SERVICE_NAME}:v${{ github.run_number }} ghcr.io/${{ env.GITHUB_USER }}/bc-115-backend-${SERVICE_NAME}:latest
+          docker push ghcr.io/${{ env.GITHUB_USER }}/bc-115-backend-${SERVICE_NAME}:v${{ github.run_number }}
+          docker push ghcr.io/${{ env.GITHUB_USER }}/bc-115-backend-${SERVICE_NAME}:latest
+        #   kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/bc-115-backend-${SERVICE_NAME}:v${{ github.run_number }}
+      - name: remove kubeconfig file
+        run: |
+          ls ~/.kube
+          rm -rf ~/.kube

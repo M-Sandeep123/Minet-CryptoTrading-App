@@ -1,0 +1,11 @@
+# service for spring boot microservice adverseaction
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-service
+spec:
+  ports:
+    - port: 8082
+  selector:
+    app: portfolio-service
+    project: bootcamp115

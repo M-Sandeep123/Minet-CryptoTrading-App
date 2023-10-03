@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend
+  labels:
+    name: backend
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: bc115be.spcluster.tk
+      http:
+        paths:
+        - path: /$
+          pathType: Exact
+          backend:
+            service:
+              name: service-registry
+              port:
+                number: 8761
+        - path: /eureka
+          pathType: Prefix
+          backend:
+            service:
+              name: service-registry
+              port:
+                number: 8761
+        - path: / 
+          pathType: Prefix
+          backend:
+            service:
+              name: api-gateway
+              port:
+                number: 9191

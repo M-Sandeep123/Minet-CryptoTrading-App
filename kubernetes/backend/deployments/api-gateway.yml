@@ -1,0 +1,46 @@
+# deployment for spring boot microservice api-gateway
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: api-gateway
+      project: bootcamp115
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+        project: bootcamp115
+    spec:
+      containers:
+        - name: api-gateway-container
+          image: ghcr.io/ishtiaqsamdani007/bc-115-backend-api-gateway
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9191       
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: api-gateway
+
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: https://bc115be.spcluster.tk/eureka/
+
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.171.66:30001/minet?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+      
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: Bootcamp@115!
+
+            - name: SPRING_FLYWAY_ENABLED
+              value: "false"
+      
+      imagePullSecrets:
+        - name: my-docker-secret

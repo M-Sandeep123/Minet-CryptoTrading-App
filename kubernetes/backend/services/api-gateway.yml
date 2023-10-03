@@ -1,0 +1,11 @@
+# service for spring boot microservice adverseaction
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway
+spec:
+  ports:
+    - port: 9191
+  selector:
+    app: api-gateway
+    project: bootcamp115

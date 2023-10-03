@@ -1,0 +1,46 @@
+# deployment for spring boot microservice crypto-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-service
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: crypto-service
+      project: bootcamp115
+  template:
+    metadata:
+      labels:
+        app: crypto-service
+        project: bootcamp115
+    spec:
+      containers:
+        - name: crypto-service-container
+          image: ghcr.io/ishtiaqsamdani007/bc-115-backend-crypto-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081       
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: crypto-service
+
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: https://bc115be.spcluster.tk/eureka/
+
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.171.66:30001/minet?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+      
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: Bootcamp@115!
+
+            - name: SPRING_FLYWAY_ENABLED
+              value: "false"
+      
+      imagePullSecrets:
+        - name: my-docker-secret

@@ -1,0 +1,11 @@
+# service for spring boot microservice adverseaction
+apiVersion: v1
+kind: Service
+metadata:
+  name: wallet-service
+spec:
+  ports:
+    - port: 8084
+  selector:
+    app: wallet-service
+    project: bootcamp115

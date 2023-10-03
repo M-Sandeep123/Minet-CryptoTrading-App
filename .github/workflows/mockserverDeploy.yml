@@ -1,0 +1,33 @@
+name: mockserver deployment for bootcamp115
+on:
+  push:
+    branches:
+      - "deployment"
+    paths:
+      - "frontend/src/data/db.json"
+      - ".github/workflows/mockserverDeploy.yml"
+jobs:
+  mockserver:
+    name: mockserver deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: configure aws
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+      - name: import the eks cluster
+        run: aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }}
+      - name: delete the mockserver-data configmap
+        run: kubectl delete configmap mockserver-data
+      - name: create the configmap with the new mockserver data
+        run: kubectl create configmap mockserver-data --from-file=frontend/src/data/db.json
+      - name: redeploy mockserver
+        run: kubectl rollout restart deployment/mockserver
+      - name: remove kubeconfig file
+        run: |
+          ls ~/.kube
+          rm -rf ~/.kube

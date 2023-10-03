@@ -1,0 +1,11 @@
+# service for spring boot microservice adverseaction
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  ports:
+    - port: 8083
+  selector:
+    app: user-service
+    project: bootcamp115

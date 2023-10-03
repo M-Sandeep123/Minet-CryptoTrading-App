@@ -1,0 +1,11 @@
+# service for spring boot microservice adverseaction
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-registry
+spec:
+  ports:
+    - port: 8761
+  selector:
+    app: service-registry
+    project: bootcamp115

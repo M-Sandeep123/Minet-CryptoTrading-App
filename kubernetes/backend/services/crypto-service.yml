@@ -1,0 +1,11 @@
+# service for spring boot microservice adverseaction
+apiVersion: v1
+kind: Service
+metadata:
+  name: crypto-service
+spec:
+  ports:
+    - port: 8081
+  selector:
+    app: crypto-service
+    project: bootcamp115

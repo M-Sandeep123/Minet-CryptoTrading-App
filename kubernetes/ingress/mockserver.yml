@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mockserver
+  labels:
+    name: mockserver
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: bc115ms.spcluster.tk
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: mockserver
+            port: 
+              number: 8080

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: database
+spec:
+  selector:
+    matchLabels:
+      app: database
+      project: bootcamp115
+  template:
+    metadata:
+      labels:
+        app: database
+        project: bootcamp115
+    spec:
+      containers:
+        - name: database-pod
+          image: mysql
+          ports:
+            - containerPort: 3306
+          volumeMounts: 
+            - name: database-config
+              mountPath: /etc/mysql/conf.d/
+            - name: persist-data
+              mountPath: /var/lib/mysql
+          readinessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          envFrom:
+            - secretRef:
+                name: mysql-secret
+      volumes: 
+        - name: database-config
+          configMap:
+            name: mysql-config          
+        - name: persist-data
+          persistentVolumeClaim:
+            claimName: database
